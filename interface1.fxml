@@ -1,30 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="619.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.HelloController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="619.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.HelloControllerNew">
     <children>
-        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3c5c80" height="404.0" layoutX="-4.0" layoutY="-2.0" pickOnBounds="true" stroke="#3c5c80" strokeType="INSIDE" strokeWidth="0.0" width="626.0" />
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3c5c80" height="404.0" layoutX="-1.0" layoutY="8.0" pickOnBounds="true" stroke="#3c5c80" strokeType="INSIDE" strokeWidth="0.0" width="626.0" />
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#141c1f" height="34.0" layoutX="-1.0" layoutY="-2.0" stroke="BLACK" strokeType="INSIDE" width="623.0" />
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#141c1f" height="342.0" layoutX="-1.0" layoutY="61.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="623.0" />
         <Rectangle arcHeight="5.0" arcWidth="5.0" height="59.0" layoutX="-3.0" layoutY="367.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="627.0" />
-        <Button fx:id="playButton" defaultButton="true" layoutX="257.0" layoutY="370.0" mnemonicParsing="false" onAction="#playMedia" prefHeight="45.0" prefWidth="54.0" style="-fx-background-color: #000000;" text="▶" textFill="WHITE">
+        <Button fx:id="playButton" defaultButton="true" layoutX="257.0" layoutY="370.0" mnemonicParsing="false" onAction="#play" prefHeight="45.0" prefWidth="54.0" style="-fx-background-color: #000000;" text="▶" textFill="WHITE">
             <font>
                 <Font size="23.0" />
             </font>
         </Button>
-        <Button fx:id="pauseButton" layoutX="311.0" layoutY="378.0" mnemonicParsing="false" onAction="#pauseMedia" style="-fx-background-color: #000000;" text="▌▌" textFill="WHITE">
+        <Button fx:id="pauseButton" layoutX="311.0" layoutY="378.0" mnemonicParsing="false" onAction="#pause" style="-fx-background-color: #000000;" text="▌▌" textFill="WHITE">
             <font>
                 <Font size="15.0" />
             </font>
         </Button>
-        <ProgressBar fx:id="songProgressBar" layoutY="356.0" prefHeight="14.0" prefWidth="623.0" progress="0.0" style="-fx-background-color: #c4c4c3#c4c4c3;" />
         <Slider fx:id="volumeSlider" layoutX="14.0" layoutY="385.0" prefHeight="5.0" prefWidth="107.0" value="50.0" />
         <Button fx:id="nextButton" layoutX="419.0" layoutY="377.0" mnemonicParsing="false" onAction="#nextMedia" style="-fx-background-color: #000000;" text="▶▶" textFill="WHITE">
             <font>
@@ -36,37 +34,22 @@
                 <Font size="17.0" />
             </font>
         </Button>
-        <Button layoutX="375.0" layoutY="377.0" mnemonicParsing="false" style="-fx-background-color: #000000;" text="▶❚" textFill="WHITE">
+        <Button layoutX="375.0" layoutY="377.0" mnemonicParsing="false" onAction="#skip10" style="-fx-background-color: #000000;" text="▶❚" textFill="WHITE">
             <font>
                 <Font size="17.0" />
             </font>
         </Button>
-        <Button layoutX="193.0" layoutY="377.0" mnemonicParsing="false" rotate="180.0" style="-fx-background-color: #000000;" text="▶❚" textFill="WHITE">
+        <Button fx:id="resetButton" layoutX="193.0" layoutY="377.0" mnemonicParsing="false" onAction="#back10" rotate="180.0" style="-fx-background-color: #000000;" text="▶❚" textFill="WHITE">
             <font>
                 <Font size="17.0" />
             </font>
         </Button>
-        <Button layoutX="495.0" layoutY="381.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="53.0" style="-fx-background-color: #2b2b2b#2b2b2b;" text="repeat" textFill="WHITE">
+        <Button fx:id="repeatButton" layoutX="495.0" layoutY="381.0" mnemonicParsing="false" onAction="#repeatMedia" prefHeight="0.0" prefWidth="53.0" style="-fx-background-color: #2b2b2b#2b2b2b;" text="repeat" textFill="WHITE">
             <font>
                 <Font size="12.0" />
             </font>
         </Button>
-        <Button cancelButton="true" layoutX="8.0" layoutY="11.0" mnemonicParsing="false" prefHeight="10.0" prefWidth="11.0" style="-fx-background-radius: 1000000000000; -fx-background-color: #ff5f57#ff5f57;">
-            <font>
-                <Font size="5.0" />
-            </font>
-        </Button>
-        <Button layoutX="30.0" layoutY="11.0" mnemonicParsing="false" prefHeight="10.0" prefWidth="11.0" style="-fx-background-radius: 1000000000000; -fx-background-color: #febc2c#febc2c;">
-            <font>
-                <Font size="5.0" />
-            </font>
-        </Button>
-        <Button layoutX="53.0" layoutY="11.0" mnemonicParsing="false" prefHeight="10.0" prefWidth="11.0" style="-fx-background-radius: 1000000000000; -fx-background-color: #29c740#29c740;">
-            <font>
-                <Font size="5.0" />
-            </font>
-        </Button>
-        <Button layoutX="559.0" layoutY="381.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="53.0" style="-fx-background-color: #2b2b2b#2b2b2b;" text="shuffle" textFill="WHITE">
+        <Button fx:id="shuffleButton" layoutX="559.0" layoutY="381.0" mnemonicParsing="false" onAction="#shuffle" prefHeight="21.0" prefWidth="53.0" style="-fx-background-color: #2b2b2b#2b2b2b;" text="shuffle" textFill="WHITE">
             <font>
                 <Font size="12.0" />
             </font>
@@ -76,7 +59,7 @@
                 <Font size="19.0" />
             </font>
         </Button>
-        <Button layoutX="116.0" layoutY="69.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="53.0" style="-fx-background-color: #2b2b2b#2b2b2b;" text="add" textFill="WHITE">
+        <Button fx:id="addButton" layoutX="116.0" layoutY="69.0" mnemonicParsing="false" onAction="#chooseFileMethod" prefHeight="15.0" prefWidth="53.0" style="-fx-background-color: #2b2b2b#2b2b2b;" text="add" textFill="WHITE">
             <font>
                 <Font size="11.0" />
             </font>
@@ -86,10 +69,7 @@
                 <Font size="11.0" />
             </font>
         </Button>
-      <Label fx:id="songLabel" alignment="CENTER" layoutX="10.0" layoutY="116.0" prefHeight="40.0" prefWidth="604.0" text="MP3 Player">
-         <font>
-            <Font size="29.0" />
-         </font>
-      </Label>
+      <ListView fx:id="songList" layoutX="59.0" layoutY="103.0" prefHeight="257.0" prefWidth="509.0" />
+      <Slider fx:id="songProgressBar" blendMode="BLUE" blockIncrement="0.0" cache="true" cacheHint="SPEED" layoutY="355.0" majorTickUnit="15.0" max="210.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="24.0" prefWidth="613.0" />
     </children>
 </AnchorPane>
