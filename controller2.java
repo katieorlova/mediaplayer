@@ -21,15 +21,29 @@ import java.io.File;
 import java.net.URL;
 import java.util.*;
 
+/**
+ * Компонент - класс HelloControllerNew, отвечающий за работу кнопок
+ * @implNote Initializable позволяет совместить controller с interface
+ * (кнопки размешенные в интерфейсе совпадали с прописанными им функциями в контроллере)
+ */
 public class HelloControllerNew implements Initializable {
 
     @FXML
     private Pane pane;
     @FXML
+    /**
+     * Компонет - переменная, отвечающая за название песни
+     */
     public Label songLabel;
     @FXML
+    /**
+     * Компонет - переменная, отвечающая за кнопки воспроизведения, паузы, перематывания, воспроизведения предыдущего и следующего mp3 файла, повтора mp3 файла
+     */
     public Button playButton, pauseButton, resetButton, previousButton, nextButton, repeatButton;
     @FXML
+    /**
+     * Компонет - переменная, отвечающая за убавление и прибавление громкости
+     */
     public Slider volumeSlider;
     @FXML
     private Slider songProgressBar;
@@ -65,18 +79,34 @@ public class HelloControllerNew implements Initializable {
         }
     }
 
+    /**
+     * Метод play отвечает за воспроизведение mp3 файла
+     * @param actionEvent - это действие, которое происходит после нажатия на кнопку
+     */
     public void play(ActionEvent actionEvent) {
         mediaPlayer.play();
     }
 
+    /**
+     * Метод pause отвечает за приостановку mp3 файла
+     * @param actionEvent - это действие, которое происходит после нажатия на кнопку
+     */
     public void pause(ActionEvent actionEvent) {
         mediaPlayer.pause();
     }
 
+    /**
+     * Метод skip10 отвечает за перематывание mp3 файла на 10 секунд вперед
+     * @param actionEvent - это действие, которое происходит после нажатия на кнопку
+     */
     public void skip10(ActionEvent actionEvent) {
         mediaPlayer.seek(mediaPlayer.getCurrentTime().add(Duration.seconds(10)));
     }
 
+    /**
+     * Метод back10 отвечает за перематывание mp3 файла на 10 секунд назад
+     * @param actionEvent - это действие, которое происходит после нажатия на кнопку
+     */
     public void back10(ActionEvent actionEvent) {
         mediaPlayer.seek(mediaPlayer.getCurrentTime().add(Duration.seconds(-10)));
     }
@@ -98,7 +128,10 @@ public class HelloControllerNew implements Initializable {
         mediaPlayer.seek(Duration.seconds(0));
     }
 
-
+    /**
+     * Метод previousMedia отвечает за воспроизведение предыдущего mp3 файла
+     * @param actionEvent - это действие, которое происходит после нажатия на кнопку
+     */
     public void previousMedia(ActionEvent actionEvent) {
         if (songNumber > 0) {
             songNumber = songNumber - 1;
@@ -115,7 +148,10 @@ public class HelloControllerNew implements Initializable {
         playMedia(actionEvent);
     }
 
-
+    /**
+     * Метод nextMedia отвечает за воспроизведение следующего mp3 файла
+     * @param actionEvent - это действие, которое происходит после нажатия на кнопку
+     */
     public void nextMedia(ActionEvent actionEvent) {
         if (songNumber < songs.size() - 1) {
             songNumber = songNumber + 1;
@@ -139,6 +175,9 @@ public class HelloControllerNew implements Initializable {
         mediaPlayer.play();
     }
 
+    /**
+     * Метод beginTimer отвечает за отсчет времени с начала воспроизведения mp3 файла
+     */
     public void beginTimer() {
         timer = new Timer();
         TimerTask task = new TimerTask() {
@@ -155,12 +194,19 @@ public class HelloControllerNew implements Initializable {
         timer.scheduleAtFixedRate(task, 0, 1000);
     }
 
+    /**
+     * Метод cancelTimer останавливает отсчет времени(beginTimer)
+     */
     public void cancelTimer() {
         running = false;
         timer.cancel();
     }
 
-
+    /**
+     * Метод initialize отвечает за связь с application
+     * @param arg0
+     * @param arg1
+     */
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         songs = new ArrayList<File>();
@@ -213,6 +259,10 @@ public class HelloControllerNew implements Initializable {
         });
     }
 
+    /**
+     * Метод repeatMedia отвчает за повтор mp3 файла
+     * @param actionEvent - это действие, которое происходит после нажатия на кнопку
+     */
     public void repeatMedia(ActionEvent actionEvent) {
         mediaPlayer.setOnEndOfMedia(new Runnable() {
             @Override
@@ -223,6 +273,10 @@ public class HelloControllerNew implements Initializable {
         });
     }
 
+    /**
+     * Метод shuffle отвечает за перемешку mp3 файлов в плейлисте
+     * @param actionEvent
+     */
     public void shuffle(ActionEvent actionEvent) {
 
     }
